@@ -1,0 +1,11 @@
+u need pterodactyl-egg-discord
+on your panel 
+https://github.com/stanislasbdx/pterodactyl-egg-discord
+and if u dont have your own panel & hosting so buy bot host 
+and upload file on home/container/ on your hosting and go "index.js" and 
+go down and past YOUR_NEW_TOKEN_HERE 
+client.login(process.env.TOKEN || 'YOUR_NEW_TOKEN_HERE'); 
+and save and start 
+setup on YT
+https://www.youtube.com/@mrtome101 
+for more help 
