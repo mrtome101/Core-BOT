@@ -144,7 +144,7 @@ client.once(Events.ClientReady, async () => {
   // Bot status (change the text below anytime)
   client.user.setPresence({
     status: 'online', // online | idle | dnd
-    activities: [{ name: 'Custom Status', type: ActivityType.Custom, state: 'play.diesiremc.fun | 19132' }]
+    activities: [{ name: 'Custom Status', type: ActivityType.Custom, state: 'play.tome.fun | 19132' }]
   });
   for (const guild of client.guilds.cache.values()) await registerCommands(guild);
 });
@@ -442,7 +442,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     }
 
     // ---------- HELP ----------
-    else if (cmd === 'dhelp') {
+    else if (cmd === 'help') {
       const embed = new EmbedBuilder()
         .setColor(COLOR)
         .setTitle('Bot Commands')
@@ -481,7 +481,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
             value: '`10m` = 10 minutes | `1h` = 1 hour | `1d` = 1 day | `7d` = 7 days'
           }
         )
-        .setFooter({ text: 'DiesireMC • Core' });
+        .setFooter({ text: 'Tome • Core' });
       await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
     }
   } catch (err) {
