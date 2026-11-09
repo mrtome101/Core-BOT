@@ -2,7 +2,9 @@ How to Set Up the Bot
 
 What you need:
 A Pterodactyl panel with this egg installed 👉
+
 https://github.com/stanislasbdx/pterodactyl-egg-discord
+
 Don't have your own panel or hosting? No worries, just buy a bot hosting plan!
 
 Steps:
