@@ -14,7 +14,7 @@ const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent, // triggers ke liye zaroori hai
+    GatewayIntentBits.MessageContent, // required for triggers
     GatewayIntentBits.GuildMembers
   ]
 });
@@ -240,7 +240,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       if (!member.bannable) return fail('❌ I cannot ban this user.');
       const reason = interaction.options.getString('reason') || 'No reason provided';
       await interaction.deferReply();
-      // DM pehle bhejo, kyunki ban ke baad DM nahi ja sakta
+      // Send the DM first, because a DM can't be sent after the ban
       await sendDM(member.user, 'You have been banned', [
         { name: 'Server', value: interaction.guild.name },
         { name: 'Reason', value: reason }
@@ -272,7 +272,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       const guild = interaction.guild;
       const userId = member.id;
       const tag = member.user.tag;
-      // NOTE: setTimeout max ~24.8 din tak chalta hai
+      // NOTE: setTimeout works for a maximum of ~24.8 days
       setTimeout(async () => {
         try {
           await guild.members.unban(userId, 'Tempban duration ended');
@@ -397,7 +397,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       }
     }
 
-    // ---------- DM (ab sender ka naam bhi jata hai) ----------
+    // ---------- DM (sender's name is included) ----------
     else if (cmd === 'dm') {
       const user = interaction.options.getUser('user');
       const text = interaction.options.getString('message');
@@ -423,7 +423,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       }
     }
 
-    // ---------- PRVDM (anonymous: sirf message, sender ka naam nahi) ----------
+    // ---------- PRVDM (anonymous: message only, no sender name) ----------
     else if (cmd === 'prvdm') {
       const user = interaction.options.getUser('user');
       const text = interaction.options.getString('message');
@@ -433,7 +433,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
           .setColor(COLOR)
           .setTitle(`Message from ${interaction.guild.name}`)
           .setDescription(text)
-          .setTimestamp(); // Discord khud "Today at / Yesterday at 22:44" dikhata hai
+          .setTimestamp(); // Discord automatically shows "Today at / Yesterday at 22:44"
         await user.send({ embeds: [embed] });
         await interaction.editReply(`✅ Private DM sent to **${user.tag}**.`);
       } catch (err) {
@@ -492,5 +492,5 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-// Token ko TOKEN environment variable mein rakho (ya yahan naya token daalo)
+// Keep the token in the TOKEN environment variable (or put your new token here)
 client.login(process.env.TOKEN || 'YOUR_NEW_TOKEN_HERE');
