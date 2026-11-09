@@ -16,7 +16,7 @@ Steps:
 
 3️⃣ Replace "YOUR_NEW_TOKEN_HERE" with your bot token.
 
-4️⃣ Search for "DiesireMC • Core" in "index.js" and rename it to your own server name, like 
+4️⃣ Search for "Tome • Core" in "index.js" and rename it to your own server name, like 
 "FireMC • Core", "AppleMC • Core" or "DonutSMP • Core".
 
 5️⃣ Save the file and hit Start ✅
