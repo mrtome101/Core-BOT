@@ -23,4 +23,4 @@ Steps:
 
 🎥 Setup video + more help: https://www.youtube.com/@mrtome101
 
-⚠️ Never share your bot token with anyone!
+⚠️ Never share your bot token with anyon!
